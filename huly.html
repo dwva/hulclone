@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huly Clone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #0c0c0c;
+            color: white;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 50px;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .main-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100vh;
+            padding: 0 50px;
+            position: relative;
+            z-index: 5;
+        }
+        .video-container {
+            position: absolute;
+            width: 100vw; /* Full width */
+            height: 200vh; /* Extends downward smoothly */
+            top: 0;
+            right: 0;
+            z-index: -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .video-container video {
+            width: 100%;
+            height: 200vh; /* Triple size */
+            object-fit: cover;
+        }
+        .text-content {
+            max-width: 35%;
+            position: relative;
+            z-index: 5;
+            text-align: left;
+        }
+        .title {
+            font-size: 65px;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+        .subtitle {
+            font-size: 18px;
+            margin: 15px 0;
+            max-width: 600px;
+        }
+        .button {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            color: black;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 15px rgba(255, 126, 95, 0.8);
+        }
+        /* Second Page */
+        .second-page {
+            height: 0%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #0c0c0c;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div >Huly     <a href="#">Pricing</a><a href="#">Resources</a> <a href="#">Community</a></div>
+        <nav>
+            
+            <a href="#">Download</a>
+            <a href="#">Sign In</a>
+            <a href="#">Get Started</a>
+        </nav>
+    </header>
+    <div class="main-content">
+        <div class="text-content">
+            <div class="title">
+                Everything App<br>
+                for your teams
+            </div>
+            <div class="subtitle">Huly, an open-source platform, serves as an all-in-one replacement of Linear, Jira, Slack, and Notion.</div>
+            <button class="button">TRY IT FREE →</button>
+        </div>
+    </div>
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="hero2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Second Page -->
+    <div class="second-page">
+        
+    </div>
+
+</body>
+</html>

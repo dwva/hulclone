@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movable Pointers with Reset on Refresh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            color: #222;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .highlight {
+            color: #ff9800;
+        }
+
+        /* Floating Video */
+        .floating-video {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Movable Pointer (Blue Pin) */
+        .movable-pointer {
+            position: absolute;
+            width: 80px;
+            height: 120px;
+            cursor: grab;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pointer-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid #4285F4;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-size: cover;
+        }
+
+        #pointer1 .pointer-circle {
+            background: url("pointer.jpg") no-repeat center;
+        }
+
+        #pointer2 .pointer-circle {
+            background: url("pointer2-copy.png") no-repeat center;
+        }
+
+        .pointer-line {
+            width: 4px;
+            height: 40px;
+            background: #4285F4;
+        }
+
+        .pointer-dot {
+            width: 12px;
+            height: 12px;
+            background: #4285F4;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <video class="floating-video" autoplay muted loop>
+        <source src="floating.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content">
+        <h1>📚 Knowledge at <br> <span class="highlight">Your Fingertips</span></h1>
+        <p>Huly offers a wide range of features to create and manage your project documentation. 
+        Huly’s suite of collaborative editing tools boosts team efficiency.</p>
+
+        <p><b>Documents in Huly</b> can be used for sharing reference materials among team members, 
+        collaborating on plans and roadmaps, storing meeting notes, and assigning action items.</p>
+
+        <img src="main.jpg" alt="Example Image" style="width:100%; border-radius:10px;">
+
+        <p>With <b>live real-time collaboration</b>, remote teams are able to work together using a unified vision 
+        to file on the page. Tagging users, linking to sections, and assigning action items are just a few of the 
+        <span class="highlight">advanced sections & powerful features</span> available within the Huly document editor.</p>
+    </div>
+
+    <div class="movable-pointer" id="pointer1">
+        <div class="pointer-circle"></div>
+        <div class="pointer-line"></div>
+        <div class="pointer-dot"></div>
+    </div>
+
+    <div class="movable-pointer" id="pointer2">
+        <div class="pointer-circle"></div>
+        <div class="pointer-line"></div>
+        <div class="pointer-dot"></div>
+    </div>
+
+    <script>
+        function makeMovable(pointerId, defaultX, defaultY) {
+            let pointer = document.getElementById(pointerId);
+            let isDragging = false;
+            let startX, startY, offsetX, offsetY;
+
+            // Get stored position from localStorage
+            let storedX = localStorage.getItem(pointerId + "_x");
+            let storedY = localStorage.getItem(pointerId + "_y");
+
+            // Set pointer to stored position or default position
+            pointer.style.left = storedX ? `${storedX}px` : `${defaultX}px`;
+            pointer.style.top = storedY ? `${storedY}px` : `${defaultY}px`;
+
+            pointer.addEventListener("mousedown", (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                offsetX = pointer.offsetLeft;
+                offsetY = pointer.offsetTop;
+                pointer.style.cursor = "grabbing";
+            });
+
+            document.addEventListener("mousemove", (e) => {
+                if (!isDragging) return;
+                let newX = offsetX + (e.clientX - startX);
+                let newY = offsetY + (e.clientY - startY);
+                pointer.style.left = `${newX}px`;
+                pointer.style.top = `${newY}px`;
+            });
+
+            document.addEventListener("mouseup", () => {
+                if (isDragging) {
+                    // Save position to localStorage
+                    localStorage.setItem(pointerId + "_x", pointer.offsetLeft);
+                    localStorage.setItem(pointerId + "_y", pointer.offsetTop);
+                    pointer.style.cursor = "grab";
+                }
+                isDragging = false;
+            });
+        }
+
+        // Pointer 1: Near Content Header (Right Side)
+        makeMovable("pointer1", window.innerWidth - 120, 100);
+
+        // Pointer 2: Near Footer Content (Left Side)
+        makeMovable("pointer2", 50, window.innerHeight - 150);
+    </script>
+
+</body>
+</html>

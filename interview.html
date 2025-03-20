@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Office</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Full Background Video */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        /* Overlay Text Content (Shifted to Top-Left) */
+        .overlay-content {
+            position: absolute;
+            top: 8%;
+            left: 5%;
+            text-align: left;
+            color: #000000;
+            max-width: 500px;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        /* Video 2 (Smaller and Positioned Lower) */
+        .overlay-video {
+            position: absolute;
+            width: 35%; /* Reduced size */
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            left: 36%; /* Adjusted position */
+            bottom: 31%;
+            z-index: 0;
+        }
+
+        /* Features Section (Footer) */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .feature {
+            text-align: center;
+            max-width: 200px;
+        }
+
+        .feature h3 {
+            font-size: 0.9rem; /* Reduced font size */
+            font-weight: bold;
+            color: #fff; /* Added explicit color */
+        }
+
+        .feature p {
+            font-size: 0.8rem; /* Reduced font size */
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Full Background Video -->
+    <video class="background-video" autoplay loop muted>
+        <source src="waves.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Text Content (Shifted to Top-Left) -->
+    <div class="overlay-content">
+        <h1 class="title">Work together. Like in the office.</h1>
+    </div>
+
+    <!-- Video 2 (Smaller & Positioned Lower) -->
+    <video class="overlay-video" autoplay loop muted>
+        <source src="video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <!-- Features Section (Footer) - Moved inside container -->
+    <div class="features">
+        <div class="feature">
+            <h3>Customize workspace</h3>
+            <p>Create your own offices and meeting rooms to suit your team's needs.</p>
+        </div>
+        <div class="feature">
+            <h3>Audio and video calls</h3>
+            <p>Collaborate efficiently and seamlessly with high-quality video conferencing.</p>
+        </div>
+        <div class="feature">
+            <h3>Invite guests</h3>
+            <p>Meet with guests without ever needing to leave your workspace.</p>
+        </div>
+    </div>
+</div>
+<a href="content.html"></a>
+</body>
+</html>

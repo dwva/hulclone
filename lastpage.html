@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join the Movement</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            width: 90%;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .video-container {
+            position: relative;
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        video {
+            width: 60%;
+            height: auto;
+            border-radius: 8px; /* Reduced from 10px */
+        }
+
+        .content {
+            width: 50%;
+            text-align: left;
+        }
+
+        h1 {
+            font-size: 2.2rem; /* Reduced from 3rem */
+            font-weight: 600;
+        }
+
+        h1 span {
+            color: lightblue;
+        }
+
+        p {
+            font-size: 1rem; /* Reduced from 1.2rem */
+            margin-bottom: 15px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .start-btn, .slack-btn {
+            padding: 8px 16px; /* Slightly smaller buttons */
+            border: none;
+            font-size: 0.9rem; /* Reduced from 1rem */
+            cursor: pointer;
+            border-radius: 3px; /* Sharper rectangle */
+            font-weight: 500;
+        }
+
+        .start-btn {
+            background: linear-gradient(to right, #007bff, #0056b3); /* Blue gradient */
+            color: white;
+        }
+
+        .slack-btn {
+            background-color: black;
+            color: white;
+            border: 1px solid white;
+        }
+
+        /* Footer Styling */
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 8px;
+            position: absolute;
+            bottom: 10px;
+            color: gray;
+            font-size: 0.5rem; /* Reduced from 0.6rem */
+        }
+
+        .footer .links a {
+            color: gray;
+            margin: 0 8px;
+            text-decoration: none;
+            font-size: 0.5rem; /* Reduced */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .video-container, .content {
+                width: 100%;
+            }
+
+            video {
+                width: 70%;
+            }
+
+            h1 {
+                font-size: 1.8rem; /* Adjusted for mobile */
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Left side video -->
+        <div class="video-container">
+            <video autoplay loop muted>
+                <source src="clock.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Right side content -->
+        <div class="content">
+            <h1>Join the <span>Movement</span></h1>
+            <p>Unlock the future of productivity with Huly. <br> 
+                Remember, this journey is just getting started.</p>
+            <div class="buttons">
+                <button class="start-btn">START NOW</button>
+                <button class="slack-btn">JOIN OUR SLACK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Copyright © 2025 Huly Labs. All rights reserved.</p>
+        <div class="links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+    </div>
+
+</body>
+</html>
